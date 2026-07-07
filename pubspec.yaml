@@ -41,6 +41,7 @@ dependencies:
   shared_preferences: ^2.5.5
   flutter_localizations:
    sdk: flutter
+  smooth_page_indicator: ^2.0.1
   flutter_svg: ^2.3.0
   gap: ^3.0.1
 

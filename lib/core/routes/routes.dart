@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:se7ety/features/intro/onboarding/onboarding_screen.dart';
 import 'package:se7ety/features/intro/splash/splash_screen.dart';
+import 'package:se7ety/features/intro/welcome/welcome_screen.dart';
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
@@ -27,10 +28,10 @@ class Routes {
         path: onboarding,
         builder: (context, state) => const OnboardingScreen(),
       ),
-      // GoRoute(
-      //   path: welcome,
-      //   builder: (context, state) => const WelcomeScreen(),
-      // ),
+      GoRoute(
+        path: welcome,
+        builder: (context, state) => const WelcomeScreen(),
+      ),
       // GoRoute(
       //   path: login,
       //   builder: (context, state) => BlocProvider(
