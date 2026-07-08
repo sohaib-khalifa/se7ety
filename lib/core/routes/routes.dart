@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:se7ety/features/auth/data/models/user_type_enum.dart';
+import 'package:se7ety/features/auth/presentation/page/login_screen.dart';
+import 'package:se7ety/features/auth/presentation/page/register_screen.dart';
 import 'package:se7ety/features/intro/onboarding/onboarding_screen.dart';
 import 'package:se7ety/features/intro/splash/splash_screen.dart';
 import 'package:se7ety/features/intro/welcome/welcome_screen.dart';
@@ -32,20 +35,18 @@ class Routes {
         path: welcome,
         builder: (context, state) => const WelcomeScreen(),
       ),
-      // GoRoute(
-      //   path: login,
-      //   builder: (context, state) => BlocProvider(
-      //     create: (context) => AuthCubit(),
-      //     child: LoginScreen(userType: state.extra as UserTypeEnum),
-      //   ),
-      // ),
-      // GoRoute(
-      //   path: register,
-      //   builder: (context, state) => BlocProvider(
-      //     create: (context) => AuthCubit(),
-      //     child: RegisterScreen(userType: state.extra as UserTypeEnum),
-      //   ),
-      // ),
+      GoRoute(
+        path: login,
+        builder: (context, state) =>
+            LoginScreen(userType: state.extra as UserTypeEnum),
+      ),
+
+      GoRoute(
+        path: register,
+        builder: (context, state) =>
+            RegisterScreen(userType: state.extra as UserTypeEnum),
+      ),
+
       // GoRoute(
       //   path: doctorRegistration,
       //   builder: (context, state) => BlocProvider(
