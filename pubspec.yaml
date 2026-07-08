@@ -44,6 +44,7 @@ dependencies:
   smooth_page_indicator: ^2.0.1
   flutter_svg: ^2.3.0
   gap: ^3.0.1
+  firebase_auth: ^6.5.4
 
 dev_dependencies:
   flutter_test:
