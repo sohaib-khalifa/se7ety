@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
@@ -30,8 +28,13 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   @override
+  void dispose() {
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final cubit = AuthCubit.get(context);
+    var cubit = context.read<AuthCubit>();
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColors.whiteColor,
@@ -45,8 +48,11 @@ class _LoginScreenState extends State<LoginScreen> {
             Navigator.pop(context);
             showMyDialog(context, state.message);
           } else if (state is AuthSuccessState) {
-            Navigator.pop(context);
-            log('Success');
+            if (state.userType == UserTypeEnum.doctor) {
+              pushToBase(context, Routes.doctorRegistration);
+            } else {
+              // main
+            }
           }
         },
         child: Center(

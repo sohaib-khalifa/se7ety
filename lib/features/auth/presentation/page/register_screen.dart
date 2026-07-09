@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
@@ -30,7 +28,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final cubit = AuthCubit.get(context);
+    var cubit = context.read<AuthCubit>();
     return BlocListener<AuthCubit, AuthState>(
       listener: (context, state) {
         if (state is AuthLoadingState) {
@@ -39,8 +37,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
           Navigator.pop(context);
           showMyDialog(context, state.message);
         } else if (state is AuthSuccessState) {
-          Navigator.pop(context);
-          log('Success');
+          if (state.userType == UserTypeEnum.doctor) {
+            pushToBase(context, Routes.doctorRegistration);
+          } else {
+            // main
+          }
         }
       },
       child: Scaffold(
@@ -60,7 +61,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     Image.asset('assets/images/logo.png', height: 200),
                     const SizedBox(height: 20),
                     Text(
-                      'سجل حساب الان كـ "${handleUserType()}"',
+                      'سجل دخول الان كـ "${handleUserType()}"',
                       style: TextStyles.title,
                     ),
                     const SizedBox(height: 30),
@@ -104,9 +105,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     ),
                     const Gap(20),
                     MainButton(
-                      onPressed: () {
+                      onPressed: () async {
                         if (cubit.formKey.currentState!.validate()) {
-                          cubit.register();
+                          cubit.register(widget.userType);
                         }
                       },
                       text: "تسجيل حساب جديد",

@@ -8,6 +8,7 @@ import 'package:se7ety/features/auth/presentation/page/register_screen.dart';
 import 'package:se7ety/features/intro/onboarding/onboarding_screen.dart';
 import 'package:se7ety/features/intro/splash/splash_screen.dart';
 import 'package:se7ety/features/intro/welcome/welcome_screen.dart';
+import 'package:se7ety/features/update_doctor/page/update_doctor_profile_screen.dart';
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
@@ -61,13 +62,10 @@ class Routes {
         ),
       ),
 
-      // GoRoute(
-      //   path: doctorRegistration,
-      //   builder: (context, state) => BlocProvider(
-      //     create: (context) => UpdateDoctorProfileCubit(),
-      //     child: UpdateDoctorProfileScreen(),
-      //   ),
-      // ),
+      GoRoute(
+        path: doctorRegistration,
+        builder: (context, state) => UpdateDoctorProfileScreen(),
+      ),
     ],
   );
 }
