@@ -46,6 +46,8 @@ dependencies:
   gap: ^3.0.1
   firebase_auth: ^6.5.4
   cloud_firestore: ^6.6.0
+  image_picker: ^1.2.3
+  dio: ^5.10.0
 
 dev_dependencies:
   flutter_test:
